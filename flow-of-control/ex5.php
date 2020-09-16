@@ -1,11 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
-$input = readline('Input a string that will be turned to numbers: ');
+$input = (string) readline('Input a string that will be turned to numbers: ');
+//Array of letters that will be turned into numbers
 $letters = str_split(strtolower($input));
 
+//The generated numbers will get stored here
 $numbers = [];
-foreach ($letters as $letter) {
-    switch ($letter){
+foreach ((array) $letters as $letter) {
+    switch ((string) $letter){
         case 'a':
         case 'b':
         case 'c':
@@ -51,4 +53,4 @@ foreach ($letters as $letter) {
     }
 }
 //ABC(2), DEF(3), GHI(4), JKL(5), MNO(6), PQRS(7), TUV(8), WXYZ(9).
-echo implode('', $numbers) . PHP_EOL;
+echo implode('', $numbers) . PHP_EOL;//Output as a string

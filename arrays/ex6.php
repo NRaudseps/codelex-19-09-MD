@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 //List of Words
 $words = ['dog', 'cat', 'banana', 'hangman', 'rectangle', 'apple', 'station', 'car', 'building', 'television'];
@@ -17,14 +17,15 @@ for($i = 0; $i < strlen($word); $i++){
 $i = 0;
 $misses = '';//A string where all the incorrect guesses are stored and will be displayed. For now empty
 $guess = '';//The guess char the player makes. For now empty
+$guessCount = $guessNumber;//Shows how many guesses the player has left. Starts at guessNumber
 echo 'You only have ' . strval($guessNumber) . ' guesses.' . PHP_EOL;
 
 while($i < $guessNumber){
     //If a guess corresponds to a letter of the word than that letter gets stored in $letters
     $letters = drawWord($word, $guess,$letters);
-    $gameWord = implode(' ', $letters);//The thing that gets displayed on the screen
-    drawGrid($misses, $gameWord);//Draws everything
-    //Win condition. If no empty spaces than all the letters have been guesses
+    $gameWord = implode(' ', $letters);//The uncovered word that gets displayed on the screen
+    drawGrid($misses, $gameWord, $guessCount);//Draws everything
+    //Win condition. If no empty spaces than all the letters have been guessed
     if(!in_array('_', $letters)){
         echo 'You have won!' . PHP_EOL;
         break; //break out of the while loop.
@@ -49,15 +50,15 @@ while($i < $guessNumber){
         echo 'You have already guessed that' . PHP_EOL;
     }
     //If the guess is not in the word
-    //It is an elseif to the other exceptions so as to not add errors in the misses string
     elseif(!in_array($guess, str_split($word))){
         //Has the guess already been made.
         if(in_array($guess, str_split($misses))){
             $i--;
             echo 'You have already guessed that' . PHP_EOL;
         }
-        //Else add to the misses
+        //Else add to the misses and decrease the guess count
         else {
+            $guessCount--;
             $misses .= $guess;
         }
     }
@@ -70,9 +71,9 @@ while($i < $guessNumber){
 }
 
 //Draws the word that will be displayed
-function drawWord($word, $guess, $letters){
+function drawWord(string $word, string $guess, array $letters): array{
     for($i = 0; $i < strlen($word); $i++){ //Go through all the letters of the word
-        if($word[$i] === $guess){ //If the guess corresponds to the letter of the word
+        if($word[$i] === $guess){ //If the guess corresponds to a letter of the word
             $letters[$i] = $guess;//Add it in to the letters array for storing
         }
     }
@@ -80,8 +81,9 @@ function drawWord($word, $guess, $letters){
 }
 
 //Draws everything
-function drawGrid ($misses, $gameWord){
+function drawGrid (string $misses, string $gameWord, int $guessNumber): void{
     echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL; //Nice little border
+    echo 'Number of guesses left: ' . $guessNumber . PHP_EOL; // Numbers of guesses left
     echo PHP_EOL;
     echo 'Word: ' . $gameWord . PHP_EOL;//Draws the word that is being guessed
     echo PHP_EOL;
