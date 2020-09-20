@@ -90,4 +90,5 @@ function checkWinner(array $placing, array $combinations, string $player):bool{
             return true;
         }
     }
+    return false;
 }
