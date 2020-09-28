@@ -6,13 +6,13 @@ $combinations = [
     3 => 'Fizz',
     5 => 'Buzz',
 ];
-$input = (int)readline('How many terms do you want: ');
+$input = (int) readline('How many terms do you want: ');
 
 FizzBuzz::output($combinations, $input);
 
 class FizzBuzz
 {
-    public static function output(array $combinations, int $input): string
+    public static function output(array $combinations, int $input): void
     {
         //Go through all the numbers starting from one
         for ($i = 1; $i < $input + 1; $i++) {

@@ -2,11 +2,11 @@
 
 $input = (int) readline('Enter your number: ');//Input
 //Positive
-if((int) $input > 0){
+if($input > 0){
     echo 'Your number is positive.';
 }
 //Negative
-elseif ((int) $input < 0){
+elseif ($input < 0){
     echo 'Your number is negative.';
 }
 //Number is 0

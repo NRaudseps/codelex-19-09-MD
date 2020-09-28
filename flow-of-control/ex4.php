@@ -2,7 +2,7 @@
 
 $input = (int) readline('Enter a number corresponding to a date: ');
 
-//Checks for every int a day.0-Sunday,1-Monday etc.
+//Checks for every int a day. 0-Sunday,1-Monday etc.
 //I noticed what you did there. Very sneaky
 switch ((int) $input){
     case 1:

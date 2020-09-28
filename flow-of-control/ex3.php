@@ -2,8 +2,8 @@
 
 $input = (int) readline('Enter your number (must be positive): ');
 //Returns digits of input
-if((int) $input > 0) {
-    echo 'Your number is ' . strval(strlen($input)) . ' digit(s) long.';
+if($input > 0) {
+    echo 'Your number is ' . strlen(strval($input)) . ' digit(s) long.';
 }
 //If not positive than respond
 else {

@@ -9,7 +9,7 @@ $combinations = [
 ];
 
 
-for((int) $i = 1; $i <= 110; $i++){
+for($i = 1; $i <= 110; $i++){
     $output = '';//Output String
     //If divisible by combination add to string
     foreach ($combinations as $index => $combination) {

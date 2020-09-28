@@ -10,8 +10,8 @@ $numbers = [
 $input = (int) readline('Enter the value to search for: ');//Input from user
 //Checks to see if number is in array
 if(in_array($input, $numbers)){
-    echo 'Numbers contains ' . strval($input) . PHP_EOL;
+    echo 'Numbers array contains ' . strval($input) . PHP_EOL;
 }
 else {
-    echo "Numbers doesn't contain " . strval($input) . PHP_EOL;
+    echo "Numbers array doesn't contain " . strval($input) . PHP_EOL;
 }

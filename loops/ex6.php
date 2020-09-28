@@ -3,7 +3,7 @@
 class AsciiFigure
 {
     //The number of rows
-    const SIZE = 10;
+    const SIZE = 7;
 
     //Both slashes are subtracted by four because on each side the number of dots grow by four
     public static function drawForwardSlashes(int $size): string
